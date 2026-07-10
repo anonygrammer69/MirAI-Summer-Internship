@@ -1,14 +1,14 @@
 import streamlit as st
+from google import genai
+import os 
+from dotenv import load_dotenv
+
 
 st.title("THE MULTIVERSE OF CHATBOTS")
 
 personality=st.selectbox("Who do you want to talk to?",[
     "Elon Musk before getting rich", "Satirical Khaby Lame", "A neutral football fan", 'A narcisisstic Christopher Nolan'
 ])
-
-from google import genai
-import os 
-from dotenv import load_dotenv
 
 load_dotenv()
 client=genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
@@ -41,8 +41,10 @@ if prompt := st.chat_input("Say something to your AI..."):
     full_prompt = f"{system_instruction}\n\nConversation so far:\n{history_text}\n\nAssistant:"
 
     try:
-        model = genai("gemini-2.5-flash")
-        response = model.generate_content(full_prompt, stream=True)
+        response = client.models.generate_content_stream(
+            model="gemini-2.5-flash",
+            contents=full_prompt
+        )
         answer_placeholder = st.empty()
         full_answer = ""
         for chunk in response:
