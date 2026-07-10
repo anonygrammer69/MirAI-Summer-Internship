@@ -32,7 +32,7 @@ if prompt := st.chat_input("Say something to your AI..."):
         }
     )
 
-    system_instruction = PERSONAS[personality]
+    system_instruction = [personality]
 
     history_text = "\n".join(
         f"{m['role'].capitalize()}: {m['content']}"
@@ -41,7 +41,7 @@ if prompt := st.chat_input("Say something to your AI..."):
     full_prompt = f"{system_instruction}\n\nConversation so far:\n{history_text}\n\nAssistant:"
 
     try:
-        model = genai.GenerativeModel("gemini-2.5-flash")
+        model = genai("gemini-2.5-flash")
         response = model.generate_content(full_prompt, stream=True)
         answer_placeholder = st.empty()
         full_answer = ""
