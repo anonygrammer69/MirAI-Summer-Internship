@@ -1,74 +1,72 @@
+import os
+import dotenv
 import streamlit as st
-from google import genai
-# Configure Gemini API
-# ----------------------------
-genai.configure(api_key="YOUR_API_KEY")
+import google.generativeai as genai
 
-# Personality selection
-personality = st.sidebar.selectbox(
-    "Choose Personality",
-    [
-        "Helpful Assistant",
-        "Funny Friend",
-        "Strict Teacher",
-        "Motivational Coach"
-    ]
-)
+dotenv.load_dotenv()
+api_key = os.getenv("GEMINI_API_KEY")
 
-# Create model
-model = genai.GenerativeModel("gemini-2.5-flash")
+if not api_key:
+    st.error("`API_KEY` environment variable not set.")
+    st.stop()
 
-# ----------------------------
-# SESSION STATE (Memory Vault)
-# ----------------------------
+genai.configure(api_key=api_key)
+
+st.title("The Memory Vault (Stateful Chatbot)")
+
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-st.title("🧠 Multiverse Chatbot")
+PERSONAS = {
+    "Elon Musk before getting rich":
+        "You are Elon Musk before becoming rich. Be ambitious, curious, and talk about technology and startups.",
 
-# ----------------------------
-# Display Previous Messages
-# ----------------------------
+    "Satirical Khaby Lame":
+        "You are Khaby Lame. Reply with sarcastic, simple, humorous observations.",
+
+    "A neutral football fan":
+        "You are a neutral football fan who gives balanced opinions without supporting any club.",
+
+    "A narcissistic Christopher Nolan":
+        "You are Christopher Nolan with an exaggerated ego. Speak dramatically and confidently."
+}
+
+selected_persona = st.sidebar.selectbox(
+    "Choose your AI Universe:",
+    options=PERSONAS.keys()
+)
+
+system_instruction = PERSONAS[selected_persona]
+
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# ----------------------------
-# Chat Input
-# ----------------------------
 if user_message := st.chat_input("Say something..."):
-
-    # Save User Message
-    st.session_state.messages.append(
-        {
-            "role": "user",
-            "content": user_message
-        }
-    )
-
-    # Display User Message
     with st.chat_message("user"):
         st.markdown(user_message)
+    
+    st.session_state.messages.append({"role": "user", "content": user_message})
 
-    # Build Prompt
-    prompt = f"""
-    You are acting as a {personality}.
-
-    User:
-    {user_message}
-    """
-
-    # Generate Response
-    response = model.generate_content(prompt)
-
-    # Save Assistant Response
-    st.session_state.messages.append(
-        {
-            "role": "assistant",
-            "content": response.text
-        }
+    
+    history_text = "\n".join(
+        f"{m['role'].capitalize()}: {m['content']}"
+        for m in st.session_state.messages
     )
+    full_prompt = f"{system_instruction}\n\nConversation so far:\n{history_text}\n\nAssistant:"
 
-    # Display Assistant Response
-    with st.chat_message("assistant"):
-        st.markdown(response.text)
+    try:
+        model = genai.GenerativeModel("gemini-2.5-flash")
+        response = model.generate_content(full_prompt)
+        
+        with st.chat_message("assistant"):
+            st.markdown(response.text)
+        
+        st.session_state.messages.append({"role": "assistant", "content": response.text})
+        
+    except Exception as e:
+        st.error(f"Gemini error: {e}")
+
+if st.sidebar.button("Clear chat"):
+    st.session_state.messages = []
+    st.rerun()
