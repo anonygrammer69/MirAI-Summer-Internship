@@ -29,7 +29,7 @@ This project demonstrates a stateful Streamlit chatbot that remembers conversati
 - The conversation state is stored in `st.session_state.messages`, which survives page reloads because Streamlit maintains session state.
 
 ## Demo
-![App Demo](c:\Users\lohit\Pictures\Screenshots\demonstration.png)
+![App Demo](demonstration.png)
 
 ## How to Run
 1. Ensure you have Python and the required packages installed (`streamlit`, `google-generativeai`, `python-dotenv`).
