@@ -41,7 +41,7 @@ Examples:
 - An astronaut floating through the atmosphere of Jupiter
 - A cyberpunk-themed visualisation of our world, 100 years from now
 - A 8k, ultra-realistic picture of the Earth, from the ISS
-- The Indian national football team winning the FIFA Wrold Cup 2030
+- The Indian national football team winning the FIFA World Cup 2030
 - A visualisation of Narendra Modi and Giorgio Meloni on a date in a Gondola, in the canals of Venice
 
 ### 📥 Download Images
