@@ -143,10 +143,10 @@ def generate_scene(player_action: str, story_genre: str, art_style: str):
     )
 
 
-st.set_page_config(page_title="Kahani Sunoge?", layout="wide")
+st.set_page_config(page_title="The Visual Novel", layout="wide")
 init_session_state()
 
-st.title("Kahani Sunoge?")
+st.title("The Visual Novel")
 st.caption("A JSON-powered visual novel with dynamic choices, generated visuals, and narration.")
 
 with st.sidebar:
@@ -174,7 +174,7 @@ if st.session_state.current_scene is None:
     initial_story = st.text_area(
         "Start your story:",
         height=150,
-        placeholder="Example: A young warrior finds a glowing map under the floorboards...",
+        placeholder="Example: A mythical beast, was witnessed by the ship's crew on their great Odyssey...",
     )
     if st.button("Generate Story", type="primary"):
         if not initial_story.strip():
