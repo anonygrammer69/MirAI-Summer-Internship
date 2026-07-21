@@ -6,8 +6,7 @@ This project is a Streamlit-based "Choose Your Own Adventure" visual novel engin
 
 ## Demo
 
-[**Watch the Demo Video**](https://drive.google.com/file/d/1Sfd4tz9VpsNBddFQHltHPi_zGOkt6rlv/view?usp=sharing) <br>
-![Demo](https://github.com/user-attachments/assets/22290bbd-0b05-45da-a7d5-4f841c0b515b)
+[**Watch the Demo Video**](https://drive.google.com/file/d/1Q4ubhtJmAMTvjfBO7quLRGax0uPHgqMa/view?usp=sharing)
 ## Features
 
 - Stateful visual novel flow using `st.session_state`
