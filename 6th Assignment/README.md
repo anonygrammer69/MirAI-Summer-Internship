@@ -23,18 +23,18 @@ $ neofetch
 User............ Lohit Thinakaran
 Username........ anonygrammer69
 OS.............. Windows 11
-Kernel.......... MirAI  B.Tech Student
+Kernel.......... MirAI Student
 Shell........... Git Bash
 IDE............. VS Code
-Education....... B.Tech Computer Science & Engineering
-College......... REC
-Role............ AI Engineer
-Focus........... Generative AI • Machine Learning
-Languages....... Python • JavaScript • C++ • HTML • CSS
-Frameworks...... Flask • Streamlit
-Database........ SQLite • Firebase (Learning)
+Education....... B.E. Computer Science & Engineering
+College......... REC Chennai, Tamil Nadu
+Role............ Developer
+Focus........... Generative AI • Machine Learning • Web/App Dev
+Languages....... Python • JavaScript • C++ • HTML • CSS • TypeScript
+Frameworks...... Flask • Streamlit • React • next.js
+Database........ SQLite • Firebase 
 Tools........... Git • GitHub • VS Code • Google Gemini API
-Projects........ AI Iage Studio
+Projects........ AI Image Studio
 ................. Multiverse of Chatbot
 ................. AI Visual Novel
 Learning........ RAG • LLMs • Agentic AI • LangChain
