@@ -42,7 +42,7 @@ Interests....... AI • Open Source • Web Development
 Status.......... Building one project at a time 🚀
 
 ═══════════════════════════════════════════════════════════════════════
-
+```
 
 ## 🚀 Tech Stack
 
