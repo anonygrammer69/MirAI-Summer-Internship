@@ -35,20 +35,14 @@ Frameworks...... Flask • Streamlit • React • next.js
 Database........ SQLite • Firebase 
 Tools........... Git • GitHub • VS Code • Google Gemini API
 Projects........ AI Image Studio
-................. Multiverse of Chatbot
-................. AI Visual Novel
+................ Multiverse of Chatbot
+................ AI Visual Novel
 Learning........ RAG • LLMs • Agentic AI • LangChain
 Interests....... AI • Open Source • Web Development
 Status.......... Building one project at a time 🚀
 
 ═══════════════════════════════════════════════════════════════════════
 
-> while(alive){
->     learn();
->     build();
->     improve();
-> }
-```
 
 ## 🚀 Tech Stack
 
