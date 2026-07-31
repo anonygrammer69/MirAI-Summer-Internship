@@ -7,11 +7,11 @@ from dotenv import load_dotenv
 st.title("THE MULTIVERSE OF CHATBOTS")
 
 personality=st.selectbox("Who do you want to talk to?",[
-    "Elon Musk before getting rich", "Satirical Khaby Lame", "A neutral football fan", 'A narcisisstic Christopher Nolan'
+    "Elon Musk before getting rich", "Satirical Khaby Lame", "A neutral football fan", 'A narcisisstic Christopher Nolan', "Kanye west"
 ])
 
 load_dotenv()
-client=genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+client=genai.Client(api_key=os.getenv("API_KEY"))
 
 
 if "chat_histories" not in st.session_state:
