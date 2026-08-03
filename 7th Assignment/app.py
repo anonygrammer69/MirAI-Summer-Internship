@@ -14,7 +14,7 @@ def get_gemini_client():
         st.stop()
     return genai.Client(api_key=api_key)
 
-client=get_gemini_client
+client=get_gemini_client()
 
 st.title("AI DIGITAL WELLBEING DASHBOARD")
 st.write("Analyze your digital wellbeing data with CSV upload or manual entry.")
@@ -103,7 +103,7 @@ with st.form("screen_time"):
             st.subheader("Minutes Used by App")
             st.bar_chart(df.set_index("App Name")["Minutes Used"])
 
-            if genai is not None:
+            if client:
                 prompt = (
                     f"Analyze the following screen time data and summarize the user's app habits:\n\n"
                     f"{df.to_string(index=False)}\n\n"
