@@ -6,15 +6,16 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-API_KEY = os.getenv("API_KEY") 
-if genai is not None and API_KEY:
-    genai.configure(api_key=API_KEY)
+@st.cache_resource
+def get_gemini_client():
+    api_key = os.getenv("API_KEY")
+    if not api_key:
+        st.error("`API_KEY` environment variable not set.")
+        st.stop()
+    return genai.Client(api_key=api_key)
 
 st.title("AI DIGITAL WELLBEING DASHBOARD")
 st.write("Analyze your digital wellbeing data with CSV upload or manual entry.")
-
-if genai is None or not API_KEY:
-    st.warning("Gemini answers are disabled until google-genai is installed and an API key is set.")
 
 uploaded_df = None
 uploaded_file = st.file_uploader(
@@ -100,7 +101,7 @@ with st.form("screen_time"):
             st.subheader("Minutes Used by App")
             st.bar_chart(df.set_index("App Name")["Minutes Used"])
 
-            if genai is not None and API_KEY:
+            if genai is not None:
                 prompt = (
                     f"Analyze the following screen time data and summarize the user's app habits:\n\n"
                     f"{df.to_string(index=False)}\n\n"
