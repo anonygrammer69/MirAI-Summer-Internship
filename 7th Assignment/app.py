@@ -113,7 +113,7 @@ with st.form("screen_time"):
                 )
 
                 with st.spinner("Generating Gemini insights..."):
-                    response = genai.responses.create(model="gemini-1.5", input=prompt)
+                    response = genai.Client.responses.create(model="gemini-2.5-flash", input=prompt)
                 answer = getattr(response, "output_text", None) or str(response)
                 st.subheader("Gemini Insights")
                 st.write(answer)
