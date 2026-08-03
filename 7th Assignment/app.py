@@ -14,6 +14,8 @@ def get_gemini_client():
         st.stop()
     return genai.Client(api_key=api_key)
 
+client=get_gemini_client
+
 st.title("AI DIGITAL WELLBEING DASHBOARD")
 st.write("Analyze your digital wellbeing data with CSV upload or manual entry.")
 
@@ -113,7 +115,7 @@ with st.form("screen_time"):
                 )
 
                 with st.spinner("Generating Gemini insights..."):
-                    response = genai.Client.responses.create(model="gemini-2.5-flash", input=prompt)
+                    response = client.responses.create(model="gemini-2.5-flash", input=prompt)
                 answer = getattr(response, "output_text", None) or str(response)
                 st.subheader("Gemini Insights")
                 st.write(answer)
