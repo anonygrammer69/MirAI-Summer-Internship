@@ -2,6 +2,9 @@ import os
 import streamlit as st
 import pandas as pd
 from google import genai
+from dotenv import load_dotenv
+
+load_dotenv()
 
 API_KEY = os.getenv("API_KEY") 
 if genai is not None and API_KEY:
