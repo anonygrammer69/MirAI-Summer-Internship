@@ -1,11 +1,7 @@
 import os
 import streamlit as st
 import pandas as pd
-
-try:
-    import google.generativeai as genai
-except ImportError:
-    genai = None
+from google import genai
 
 API_KEY = os.getenv("API_KEY") 
 if genai is not None and API_KEY:
