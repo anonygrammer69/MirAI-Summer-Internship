@@ -117,7 +117,7 @@ with st.form("screen_time"):
                 with st.spinner("Generating Gemini insights..."):
                     response = client.models.generate_content(model="gemini-2.5-flash", contents=prompt)
                 st.subheader("Gemini Insights")
-                st.write(response)
+                st.write(response.text)
             else:
                 st.info("Gemini insights are unavailable.")
     
