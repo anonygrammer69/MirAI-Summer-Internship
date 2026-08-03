@@ -4,7 +4,7 @@ import streamlit as st
 import google.generativeai as genai
 
 dotenv.load_dotenv()
-api_key = os.getenv("GEMINI_API_KEY")
+api_key = os.getenv("API_KEY")
 
 if not api_key:
     st.error("`API_KEY` environment variable not set.")
